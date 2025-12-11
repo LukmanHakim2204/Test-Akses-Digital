@@ -48,7 +48,7 @@ class User extends Authenticatable
     }
     public function projects()
     {
-        return $this->belongsToMany(Project::class, 'pivot_project')
+        return $this->belongsToMany(Project::class, 'project_user')
             ->withPivot('role_in_project')
             ->withTimestamps()
             ->where('users.role', 'staff');

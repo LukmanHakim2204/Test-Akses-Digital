@@ -56,7 +56,7 @@
 
                  <!-- Project -->
                  <li class="nav-item">
-                     <a href="">
+                     <a href="{{ route('project.index') }}">
                          <i class="fas fa-folder-open"></i>
                          <p>Project</p>
                      </a>

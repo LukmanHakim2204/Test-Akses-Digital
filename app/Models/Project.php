@@ -17,11 +17,11 @@ class Project extends Model
     ];
     public function manager()
     {
-        return $this->belongsToMany(User::class, 'pivot_project')
+        return $this->belongsToMany(User::class, 'project_user')
             ->withPivot('role_in_project')
-            ->withTimestamps()
-            ->where('users.role', 'staff');
+            ->withTimestamps();
     }
+
     public function tasks()
     {
         return $this->hasMany(Task::class);
