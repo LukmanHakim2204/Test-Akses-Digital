@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
+use Illuminate\Foundation\Http\FormRequest;
 use function Symfony\Component\Translation\t;
 
 class ProjectRequest extends FormRequest
@@ -42,5 +43,17 @@ class ProjectRequest extends FormRequest
             'role_in_project.string' => 'The role in project must be a string.',
             'role_in_project.max'    => 'The role in project may not be greater than 255 characters.',
         ];
+    }
+    protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    {
+        
+        foreach ($validator->errors()->all() as $error) {
+          Alert::toast($error, 'error');
+        }
+
+        // Redirect kembali dengan input lama
+        throw new \Illuminate\Http\Exceptions\HttpResponseException(
+            redirect()->back()->withErrors($validator)->withInput()
+        );
     }
 }
