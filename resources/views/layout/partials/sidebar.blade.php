@@ -40,7 +40,7 @@
 
                  <!-- Management User -->
                  <li class="nav-item">
-                     <a href="">
+                     <a href="{{ route('users.index') }}">
                          <i class="fas fa-users-cog"></i>
                          <p>Management User</p>
                      </a>
