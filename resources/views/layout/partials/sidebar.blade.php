@@ -64,7 +64,7 @@
 
                  <!-- Task -->
                  <li class="nav-item">
-                     <a href="">
+                     <a href="{{ route('task.index') }}">
                          <i class="fas fa-tasks"></i>
                          <p>Task</p>
                      </a>
@@ -72,7 +72,7 @@
 
                  <!-- Orders -->
                  <li class="nav-item">
-                     <a href="">
+                     <a href="{{ route('orders.index') }}">
                          <i class="fas fa-shopping-cart"></i>
                          <p>Orders</p>
                      </a>
@@ -80,7 +80,7 @@
 
                  <!-- Finance -->
                  <li class="nav-item">
-                     <a href="">
+                     <a href="{{ route('finances.index') }}">
                          <i class="fas fa-coins"></i>
                          <p>Finance</p>
                      </a>
