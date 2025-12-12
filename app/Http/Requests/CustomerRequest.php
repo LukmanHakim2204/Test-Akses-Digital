@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CustomerRequest extends FormRequest
@@ -37,5 +38,17 @@ class CustomerRequest extends FormRequest
             'address.max' => 'The address may not be greater than 500 characters.',
             'address.string' => 'The address must be a string.',
         ];
+    }
+    protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    {
+
+        foreach ($validator->errors()->all() as $error) {
+            Alert::toast($error, 'error');
+        }
+
+
+        throw new \Illuminate\Http\Exceptions\HttpResponseException(
+            redirect()->back()->withErrors($validator)->withInput()
+        );
     }
 }
