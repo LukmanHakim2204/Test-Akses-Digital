@@ -14,7 +14,7 @@
                     <i class="icon-arrow-right"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Project</a>
+                    <a href="#">project</a>
                 </li>
                 <li class="separator">
                     <i class="icon-arrow-right"></i>

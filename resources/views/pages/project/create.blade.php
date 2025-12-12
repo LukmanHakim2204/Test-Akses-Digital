@@ -30,7 +30,7 @@
 
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <div class="card-title">project Form</div>
+                        <div class="card-title">Project Form</div>
                     </div>
 
                     <div class="card-body">

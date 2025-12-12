@@ -44,13 +44,7 @@
 
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Manager</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </tfoot>
+
                                 <tbody>
                                     @foreach ($projects as $project)
                                         <tr>
