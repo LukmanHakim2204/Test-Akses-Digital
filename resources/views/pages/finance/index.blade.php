@@ -38,21 +38,21 @@
                             <table id="basic-datatables" class="display table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Customer Name</th>
-                                        <th>Total Amount</th>
-                                        <th>Status</th>
+                                        <th>No</th>
+                                        <th> Type </th>
+                                        <th> Amount</th>
+                                        <th>Date</th>
                                         <th>Action</th>
-
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     @foreach ($finances as $finance)
                                         <tr>
-                                            <td>{{ $finance->customer->name }}</td>
-                                            <td>{{ $finance->total_amount }}</td>
-                                            <td>{{ $finance->status }}</td>
-
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $finance->type }}</td>
+                                            <td>{{ $finance->amount }}</td>
+                                            <td>{{ $finance->date }}</td>
                                             <td>
                                                 <a href="{{ route('finances.edit', $finance->id) }}"
                                                     class="btn btn-sm btn-primary">Edit</a>

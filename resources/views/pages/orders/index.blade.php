@@ -38,6 +38,7 @@
                             <table id="basic-datatables" class="display table table-striped table-hover">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Customer Name</th>
                                         <th>Total Amount</th>
                                         <th>Status</th>
@@ -49,6 +50,7 @@
                                 <tbody>
                                     @foreach ($orders as $order)
                                         <tr>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $order->customer->name }}</td>
                                             <td>{{ $order->total_amount }}</td>
                                             <td>{{ $order->status }}</td>

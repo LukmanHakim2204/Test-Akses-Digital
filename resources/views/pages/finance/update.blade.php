@@ -43,9 +43,11 @@
                                     <div class="form-group mb-3">
                                         <label for="type">Type</label>
                                         <select name="type" id="type" class="form-control">
-                                            <option value="income" {{ old('type') == 'income' ? 'selected' : '' }}>Income
+                                            <option value="income"
+                                                {{ old('type') == 'income' ? 'selected' : '' . $finance->type }}>Income
                                             </option>
-                                            <option value="expense" {{ old('type') == 'expense' ? 'selected' : '' }}>Expense
+                                            <option value="expense"
+                                                {{ old('type') == 'expense' ? 'selected' : '' . $finance->type }}>Expense
                                             </option>
                                         </select>
                                     </div>
@@ -54,21 +56,22 @@
                                     <div class="form-group mb-3">
                                         <label for="amount"> Amount</label>
                                         <input type="number" name="amount" id="amount" class="form-control"
-                                            placeholder="Enter finances total amount" value="{{ old('amount') }}">
+                                            placeholder="Enter finances total amount"
+                                            value="{{ old('amount') ?? $finance->amount }}">
                                     </div>
 
 
                                     {{-- Description --}}
                                     <div class="form-group mb-3">
                                         <label for="description">Description</label>
-                                        <textarea type="text" name="description" class="form-control" id="description" placeholder="Description"
-                                            value="{{ old('description') }}"></textarea>
+                                        <textarea name="description" class="form-control" id="description" placeholder="Description">{{ old('description', $finance->description) }}</textarea>
                                     </div>
+
 
                                     <div class="form-group mb-3">
                                         <label for="date">Date</label>
                                         <input type="date" name="date" id="date" class="form-control"
-                                            value="{{ old('date') }}">
+                                            value="{{ old('date') ?? $finance->date }}">
                                     </div>
 
                                 </div>

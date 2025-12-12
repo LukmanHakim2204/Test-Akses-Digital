@@ -38,22 +38,18 @@
                             <table id="basic-datatables" class="display table table-striped table-hover">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Action</th>
 
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </tfoot>
+
                                 <tbody>
                                     @foreach ($customers as $customer)
                                         <tr>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $customer->name }}</td>
                                             <td>{{ $customer->email }}</td>
                                             <td>

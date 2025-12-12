@@ -38,6 +38,7 @@
                             <table id="basic-datatables" class="display table table-striped table-hover">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Project Name</th>
                                         <th>Assign User</th>
                                         <th>Title</th>
@@ -50,6 +51,7 @@
                                 <tbody>
                                     @foreach ($tasks as $task)
                                         <tr>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $task->project->title }}</td>
                                             <td>{{ $task->assignedToUser->name }}</td>
                                             <td>{{ $task->title }}</td>

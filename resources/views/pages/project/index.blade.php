@@ -38,6 +38,7 @@
                             <table id="basic-datatables" class="display table table-striped table-hover">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Title</th>
                                         <th>Manager</th>
                                         <th>Action</th>
@@ -48,6 +49,7 @@
                                 <tbody>
                                     @foreach ($projects as $project)
                                         <tr>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $project->title }}</td>
                                             <td>{{ $project->manager->first()?->name ?? '-' }}</td>
 

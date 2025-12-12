@@ -57,9 +57,9 @@
                                     <div class="form-group mb-3">
                                         <label for="total_amount"> Amount</label>
                                         <input type="number" name="amount" id="amount" class="form-control"
-                                            placeholder="Enter finances total amount" value="{{ old('total_amount') }}">
+                                            placeholder="Enter finances total amount" value="{{ old('amount') }}">
                                     </div>
-                                    
+
 
                                     {{-- Description --}}
                                     <div class="form-group mb-3">
