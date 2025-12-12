@@ -55,9 +55,16 @@ Route::middleware('auth')->group(function () {
     Route::put('/finances/{id}', [App\Http\Controllers\FinanceController::class, 'update'])->name('finances.update');
     Route::delete('/finances/{id}', [App\Http\Controllers\FinanceController::class, 'destroy'])->name('finances.destroy');
 
+    //Report
+    Route::get('/reports', [App\Http\Controllers\ReportController::class, 'index'])->name('reports.index');
+
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Role & Permission
+    Route::resource('roles', App\Http\Controllers\RolePermissionController::class);
 });
 
 require __DIR__ . '/auth.php';

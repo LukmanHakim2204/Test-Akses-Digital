@@ -53,15 +53,18 @@
                                             <td>{{ $customer->name }}</td>
                                             <td>{{ $customer->email }}</td>
                                             <td>
-                                                <a href="{{ route('customer.edit', $customer->id) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
-                                                <form action="{{ route('customer.destroy', $customer->id) }}" method="POST"
-                                                    class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                                </form>
-
+                                                @can('edit customer')
+                                                    <a href="{{ route('customer.edit', $customer->id) }}"
+                                                        class="btn btn-sm btn-primary">Edit</a>
+                                                @endcan
+                                                @can('delete customer')
+                                                    <form action="{{ route('customer.destroy', $customer->id) }}" method="POST"
+                                                        class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    </form>
+                                                @endcan
                                             </td>
                                         </tr>
                                     @endforeach

@@ -57,25 +57,32 @@
                                             <td>{{ $task->title }}</td>
                                             <td>{{ $task->status }}</td>
                                             <td>
-                                                <a href="{{ route('task.edit', $task->id) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
-                                                <form action="{{ route('task.destroy', $task->id) }}" method="POST"
-                                                    class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                                </form>
+                                                @can('edit task')
+                                                    <a href="{{ route('task.edit', $task->id) }}"
+                                                        class="btn btn-sm btn-primary">Edit</a>
+                                                @endcan
 
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                                @can('delete task')
+                                                    <form action="{{ route('task.destroy', $task->id) }}" method="POST"
+                                                        class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button onclick="return confirm('Yakin ingin menghapus task ini?')"
+                                                            class="btn btn-sm btn-danger">
+                                                            Delete
+                                                        </button>
+                                                    </form>
+
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
-@endsection
+    @endsection

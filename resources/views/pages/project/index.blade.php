@@ -54,14 +54,19 @@
                                             <td>{{ $project->manager->first()?->name ?? '-' }}</td>
 
                                             <td>
-                                                <a href="{{ route('project.edit', $project->id) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
-                                                <form action="{{ route('project.destroy', $project->id) }}" method="POST"
-                                                    class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                                </form>
+                                                @can('edit project')
+                                                    <a href="{{ route('project.edit', $project->id) }}"
+                                                        class="btn btn-sm btn-primary">Edit</a>
+                                                @endcan
+                                                @can('delete project')
+                                                    <form action="{{ route('project.destroy', $project->id) }}" method="POST"
+                                                        class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    </form>
+                                                @endcan
+
 
                                             </td>
                                         </tr>

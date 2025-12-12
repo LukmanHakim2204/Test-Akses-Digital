@@ -56,14 +56,18 @@
                                             <td>{{ $order->status }}</td>
 
                                             <td>
-                                                <a href="{{ route('orders.edit', $order->id) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
-                                                <form action="{{ route('orders.destroy', $order->id) }}" method="POST"
-                                                    class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                                </form>
+                                                @can('edit orders')
+                                                    <a href="{{ route('orders.edit', $order->id) }}"
+                                                        class="btn btn-sm btn-primary">Edit</a>
+                                                @endcan
+                                                @can('delete orders')
+                                                    <form action="{{ route('orders.destroy', $order->id) }}" method="POST"
+                                                        class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    </form>
+                                                @endcan
 
                                             </td>
                                         </tr>

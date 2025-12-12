@@ -54,15 +54,18 @@
                                             <td>{{ $finance->amount }}</td>
                                             <td>{{ $finance->date }}</td>
                                             <td>
-                                                <a href="{{ route('finances.edit', $finance->id) }}"
-                                                    class="btn btn-sm btn-primary">Edit</a>
-                                                <form action="{{ route('finances.destroy', $finance->id) }}" method="POST"
-                                                    class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                                </form>
-
+                                                @can('edit finance')
+                                                    <a href="{{ route('finances.edit', $finance->id) }}"
+                                                        class="btn btn-sm btn-primary">Edit</a>
+                                                @endcan
+                                                @can('delete finance')
+                                                    <form action="{{ route('finances.destroy', $finance->id) }}" method="POST"
+                                                        class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                    </form>
+                                                @endcan
                                             </td>
                                         </tr>
                                     @endforeach
