@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Finance;
 use Illuminate\Http\Request;
 use App\Http\Requests\FinanceRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class FinanceController extends Controller
 {
@@ -31,6 +32,7 @@ class FinanceController extends Controller
     public function store(FinanceRequest $request)
     {
         Finance::create($request->validated());
+        Alert::toast('Finance record created successfully', 'success');
         return redirect()->route('finances.index');
     }
 
@@ -47,7 +49,8 @@ class FinanceController extends Controller
      */
     public function edit(string $id)
     {
-        return view('pages.finance.update');
+        $finance = Finance::findOrFail($id);
+        return view('pages.finance.update', compact('finance'));
     }
 
     /**
@@ -57,6 +60,7 @@ class FinanceController extends Controller
     {
         $finance = Finance::findOrFail($id);
         $finance->update($request->validated());
+        Alert::toast('Finance record updated successfully', 'success');
         return redirect()->route('finances.index');
     }
 
@@ -67,6 +71,7 @@ class FinanceController extends Controller
     {
         $finance = Finance::findOrFail($id);
         $finance->delete();
+        Alert::toast('Finance record deleted successfully', 'success');
         return redirect()->route('finances.index');
     }
 }
